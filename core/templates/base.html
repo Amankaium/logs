@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bLOG</title>
+</head>
+<body>
+    {% block menu %}
+        <h2>
+            <a href="{% url 'articles' %}">Все статьи</a>
+            <a href="{% url 'top' %}">Топ 1</a>
+            <a href="{% url 'test' %}">Тест</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
+        </h2>
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
