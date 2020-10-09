@@ -23,4 +23,8 @@ def top(request):
 
 def article(request, id):
     article_object = Article.objects.get(id=id)
+    article_object.views += 1
+    user = request.user
+    article_object.readers.add(user)
+    article_object.save()
     return render(request, "article.html", {"article": article_object})
