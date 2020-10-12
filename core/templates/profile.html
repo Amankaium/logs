@@ -4,4 +4,8 @@
     <h2>Профиль пользователя {{ profile.user.username }}</h2>
     <h3>Страница в VK: {{ profile.vk }}</h3>
     <h3>Страница в Facebook: {{ profile.fb }}</h3>
+    {% if profile.photo %}
+        {{ profile.photo.url }}
+        <img src="{{ MEDIA_URL }}{{ profile.photo.url }}">
+    {% endif %}
 {% endblock %}
