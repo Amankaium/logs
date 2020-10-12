@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Автор: <i>{{ article.author }}</i><br>
+    Автор:
+    <a href="{% url 'profile' article.author.profile.id %}">
+        <i>{{ article.author }}</i>
+    </a>
+    <br>
     Создано: <b>{{ article.created_date }}</b>
     <h3>{{ article.title }}</h3>
     <div>{{ article.text }}</div>

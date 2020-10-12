@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from core.models import Article
+from core.models import Article, Profile
 
 
 def homepage(request):
@@ -28,3 +28,10 @@ def article(request, id):
     article_object.readers.add(user)
     article_object.save()
     return render(request, "article.html", {"article": article_object})
+
+
+def profile(request, id):
+    user_profile = Profile.objects.get(id=id)
+    context = {"profile": user_profile}
+    # context["date"] = "12-10-2020"
+    return render(request, "profile.html", context)
