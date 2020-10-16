@@ -9,7 +9,8 @@
 </head>
 <body>
     {% block menu %}
-        <h2>
+        <h2>   
+            <a href="{% url 'home' %}">Домой</a>
             <a href="{% url 'articles' %}">Все статьи</a>
             <a href="{% url 'top' %}">Топ 1</a>
             <a href="{% url 'test' %}">Тест</a>

@@ -4,7 +4,9 @@ from core.models import Article, Profile
 
 
 def homepage(request):
-    return HttpResponse("hi!")
+    # return HttpResponse("hi!")
+    articles = Article.objects.all()
+    return render(request, "homepage.html", {"articles": articles})
 
 def test(request):
     return render(request, "test.html")
