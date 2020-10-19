@@ -14,7 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_editable = ["publicated"]
     ordering = ["views"]
     
-    fields = ["title", "text", "created_date", "updated_date"]
+    # fields = ["title", "text", "created_date", "updated_date"]
     readonly_fields = ["created_date", "updated_date"]
 
     list_filter = ("publicated", "author", "created_date")

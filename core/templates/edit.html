@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <input type="text" size="80" name="title" value="{{ article.title }}">
+        </div>
+        <br>
+        <div>
+            <textarea name="text" cols="70" rows="10">{{ article.text }}</textarea>
+        </div>
+        <button>Сохранить</button>
+    </form>
+
+{% endblock %}
