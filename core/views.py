@@ -58,7 +58,8 @@ def add(request):
         form = request.POST
         article = Article(
             title=form["title"],
-            text=form["text"]
+            text=form["text"],
+            author=request.user
         )
         article.save()
         return redirect(homepage)
