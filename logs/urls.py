@@ -26,7 +26,10 @@ urlpatterns = [
     path("contacts/", contacts, name="contacts"),
     path("top/", top, name="top"),
     path("profile/<int:id>/", profile, name="profile"),
-    path("article/", include("core.urls"))
+    path("article/", include("core.urls")),
+    # path("test2/", another_test, name="test-2")
+    path("test2/", FirstUserView.as_view(), name="test-2-cbv"),
+    path("user/<id>/", user_fbv)
 ]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

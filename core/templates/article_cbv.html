@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if article.author %}
+        Автор:
+            <a href="{% url 'profile' article.author.profile.id %}">
+                <i>{{ article.author }}</i>
+            </a>
+        <br>
+    {% endif %}
+    Создано: <b>{{ article.created_date }}</b>
+    <h3>{{ article.title }}</h3>
+    <div>{{ article.text }}</div>
+    {% if article.author == request.user %}
+        <br>
+        <a href="{% url 'edit' article.id %}">Изменить</a>
+        <form method="POST">
+            {% csrf_token %}
+            <button>Удалить</button>
+        </form>
+    {% endif %}
+
+    <hr>
+    <h4>Просмотры (атрибут): {{ article.views }}</h4>
+    <h4>Просмотры (читатели, многое ко многому): {{ article.readers.count }} </h4>
+    <hr>
+    <h4>Пользователи, прочитавшие эту статью:</h4>
+    <ul>
+    {% for user in article.readers.all %}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
