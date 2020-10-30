@@ -116,7 +116,7 @@ def edit(request, id):
         article.text = form["text"]
         article.title = form["title"]
         article.save()
-        return redirect("article", id=id)
+        return redirect("article", pk=id)
 
     return render(request, "edit.html", {"article": article})
 

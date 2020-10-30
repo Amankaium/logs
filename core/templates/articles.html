@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <hr>
-    {% for article in articles %}
-        <a href="{% url 'article' article.id %}">
-            <h3>{{ article.title }}</h3>
-        </a>
-        <hr>
-    {% endfor %}
+    
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <a href="{% url 'article' article.id %}">
+                <h3>{{ article.title }}</h3>
+            </a>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

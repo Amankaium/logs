@@ -5,13 +5,14 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
-            <input type="text" name="title" placeholder="Заголовок">
+            <input class="form-control" type="text" name="title" placeholder="Заголовок">
         </div>
         <br>
         <div>
-            <textarea name="text" cols="70" rows="10" placeholder="Текст"></textarea>
+            <textarea class="form-control" name="text" cols="70" rows="10" placeholder="Текст"></textarea>
         </div>
-        <button>Добавить</button>
+        <br>
+        <button class="btn btn-outline-dark">Добавить</button>
     </form>
 
 {% endblock %}
