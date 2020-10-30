@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+    {{ test }}
     {% if article.author %}
         Автор:
             <a href="{% url 'profile' article.author.profile.id %}">
@@ -8,9 +10,9 @@
             </a>
         <br>
     {% endif %}
-    Создано: <b>{{ article.created_date }}</b>
+    Создано: <b>{{ article.created_date|date:"d.m.Y" }}</b>
     <h3>{{ article.title }}</h3>
-    <div>{{ article.text }}</div>
+    <div>{{ article.text|linebreaks }}</div>
     {% if article.author == request.user %}
         <br>
         <a href="{% url 'edit' article.id %}">Изменить</a>
@@ -23,6 +25,8 @@
     <hr>
     <h4>Просмотры (атрибут): {{ article.views }}</h4>
     <h4>Просмотры (читатели, многое ко многому): {{ article.readers.count }} </h4>
+    <h4>Опубликовано: {{ article.publicated|yesno:"Да, Нет, Неизвестно" }}</h4>
+    <h4>Рейтинг: {{ article.rating }}</h4>
     <hr>
     <h4>Пользователи, прочитавшие эту статью:</h4>
     <ul>

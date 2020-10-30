@@ -54,11 +54,11 @@ def article(request, id):
 
 class ArticleDetailView(DetailView):
     template_name = "article_cbv.html"
-    queryset = Article.objects.all()
+    queryset = Article.objects.filter(created_date__gte="2020-01-01")
 
     def post(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        article = context["article"]
+        # context = self.get_context_data(**kwargs)
+        article = Article.objects.get(id=self.kwargs["pk"])
         article.delete()
         return redirect(homepage)
     
@@ -72,6 +72,12 @@ class ArticleDetailView(DetailView):
             article_object.readers.add(user)
             article_object.save()
         return self.render_to_response(context)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["article"] = Article.objects.get(id=self.kwargs["pk"])
+        context["test"] = 123
+        return context
 
 
 
