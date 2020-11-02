@@ -142,4 +142,7 @@ class FirstUserView(TemplateView):
         return kwargs
 
 
+def all_users(request):
+    return render(request, "users.html", {"users": User.objects.all()})
+
     
